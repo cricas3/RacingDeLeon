@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 {
                     e.printStackTrace();
                 }
+                finish();
             }
         };
         buttonEliminar.setOnClickListener(listenerEliminar);
@@ -121,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         jugadoresList = new ArrayList<>();
 
         new GetContacts().execute();
+
+
     }
 
     @Override
@@ -191,10 +194,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            //String url = "http://10.245.97.193/api/v1/listaConvocados";
+            String url = "http://10.245.97.193/api/v1/listaConvocados";
 
             //casa
-            String url = "http://192.168.0.30/api/v1/listaConvocados";
+            //String url = "http://192.168.0.30/api/v1/listaConvocados";
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/listaConvocados";
@@ -213,7 +216,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             {
                 try
                 {
-                    if (jsonStr.contains("ERROR")) {
+                    if (jsonStr.contains("ERROR"))
+                    {
                         runOnUiThread(new Runnable()
                         {
                             @Override
@@ -222,7 +226,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 Toast.makeText(getApplicationContext(),"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else {
+                    }
+                    else
+                    {
                         JSONObject jsonObj = new JSONObject(jsonStr);
                         JSONArray equipos = jsonObj.getJSONArray("lista");
 
@@ -279,10 +285,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             try
             {
                 //trabajo
-                //URL url = new URL("http://10.245.97.193/api/v1/borrarConvocatoria");
+                URL url = new URL("http://10.245.97.193/api/v1/borrarConvocatoria");
 
                 //casa
-                URL url = new URL("http://192.168.0.30/api/v1/borrarConvocatoria");
+                //URL url = new URL("http://192.168.0.30/api/v1/borrarConvocatoria");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/borrarConvocatoria");

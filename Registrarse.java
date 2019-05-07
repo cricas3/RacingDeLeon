@@ -104,10 +104,10 @@ public class Registrarse extends Activity
             try
             {
                 //trabajo
-                //URL url = new URL("http://10.245.97.193/api/v1/registrar");
+                URL url = new URL("http://10.245.97.193/api/v1/registrar");
 
                 //casa
-                URL url = new URL("http://192.168.0.30/api/v1/registrar");
+                //URL url = new URL("http://192.168.0.30/api/v1/registrar");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/registrar");

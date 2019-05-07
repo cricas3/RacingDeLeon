@@ -76,10 +76,10 @@ public class Jugadores extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            //String url = "http://10.245.97.193/api/v1/jugadores/"+id;
+            String url = "http://10.245.97.193/api/v1/jugadores/"+id;
 
             //casa
-            String url = "http://192.168.0.30/api/v1/jugadores/"+id;
+            //String url = "http://192.168.0.30/api/v1/jugadores/"+id;
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/jugadores/"+id;
@@ -99,7 +99,8 @@ public class Jugadores extends Activity
             {
                 try
                 {
-                    if (jsonStr.contains("ERROR")) {
+                    if (jsonStr.contains("ERROR"))
+                    {
                         runOnUiThread(new Runnable()
                         {
                             @Override
@@ -108,11 +109,14 @@ public class Jugadores extends Activity
                                 Toast.makeText(getApplicationContext(),"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
                             }
                         });
-                    } else {
+                    }
+                    else
+                    {
                         JSONObject jsonObj = new JSONObject(jsonStr);
                         JSONArray equipos = jsonObj.getJSONArray("jugadores");
 
-                        for (int i = 0; i < equipos.length(); i++) {
+                        for (int i = 0; i < equipos.length(); i++)
+                        {
                             JSONObject c = equipos.getJSONObject(i);
                             String name = c.getString("Nombre");
 
