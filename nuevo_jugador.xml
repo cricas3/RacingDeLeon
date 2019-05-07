@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondopantalla">
+
+    <TextView
+        android:id="@+id/textViewNombreNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre"/>
+
+    <EditText
+        android:id="@+id/editTextNombreNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewApellido1Nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Primer apellido"/>
+
+    <EditText
+        android:id="@+id/editTextApellido1Nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewApellido2Nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Segundo apelldio"/>
+
+    <EditText
+        android:id="@+id/editTextApellido2Nuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/insertarNuevo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insertar"/>
+
+</LinearLayout>

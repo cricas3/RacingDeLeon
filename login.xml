@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondopantalla">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:paddingLeft="50pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="c"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="i"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="n"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="g"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  "
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="d"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="e"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  "
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="e"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ó"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/holo_blue_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="n"
+            android:textSize="12pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/escudo"/>
+
+    <TextView
+        android:id="@+id/nombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de usuario"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextNombreUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/passWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextPassWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recordar datos"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <Button
+        android:id="@+id/botonRegistrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"/>
+
+    <Button
+        android:id="@+id/botonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"/>
+
+</LinearLayout>

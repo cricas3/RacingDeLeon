@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondopantalla">
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/primerApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Primer apellido"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextPrimerApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/segundoApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Segundo apellido"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextSegundoApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/correo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Correo electrónico"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/nombreUsuarioRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre de usuario"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextNombreUsuarioRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/passWordRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextPassWordRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/repetirPassWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Repetir contraseña"
+        android:textSize="8pt"
+        android:textColor="@android:color/holo_orange_light"/>
+
+    <EditText
+        android:id="@+id/editTextRepetirPassWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/botonRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"/>
+
+</LinearLayout>

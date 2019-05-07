@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondopantalla">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jugadores disponibles"
+        android:textSize="12pt"
+        android:textAlignment="center"
+        android:paddingBottom="10pt"
+        android:paddingTop="7pt"/>
+
+    <ListView
+        android:id="@+id/listViewConvocatoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:dividerHeight="15dp"/>
+
+    <Button
+        android:id="@+id/comprobarConvocatoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comprobar convocatoria"
+        android:layout_marginTop="10pt"/>
+
+</LinearLayout>
