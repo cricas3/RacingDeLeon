@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +27,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
@@ -112,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 {
                     e.printStackTrace();
                 }
-                finish();
             }
         };
         buttonEliminar.setOnClickListener(listenerEliminar);
@@ -122,8 +119,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         jugadoresList = new ArrayList<>();
 
         new GetContacts().execute();
-
-
     }
 
     @Override
@@ -185,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -223,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             @Override
                             public void run()
                             {
-                                Toast.makeText(getApplicationContext(),"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
+                                Toast.makeText(ctx,"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -248,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void run()
                         {
-                            Toast.makeText(getApplicationContext(),"Json parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ctx,"Json parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -260,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void run()
                     {
-                        Toast.makeText(getApplicationContext(),"Couldn't get json from server. Check LogCat for possible errors!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ctx,"No se pudo obtener el json del servidor. Compruebe el Logcat para posibles errores", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -302,13 +296,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 conn.setRequestMethod("POST");
                 conn.setDoOutput(true);
 
-                int responseCode=conn.getResponseCode();
+                int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK)
                 {
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuffer sb = new StringBuffer("");
-                    String line="";
+                    String line = "";
 
                     while((line = in.readLine()) != null)
                     {
@@ -320,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 else
                 {
-                    return new String("false : "+responseCode);
+                    return new String("false: "+responseCode);
                 }
             }
             catch(Exception e)

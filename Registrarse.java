@@ -20,7 +20,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class Registrarse extends Activity
@@ -69,7 +68,7 @@ public class Registrarse extends Activity
 
                 if (nombre.equals("") || apellido1.equals("") || apellido1.equals("") || correo.equals("") || usuario.equals("") || password.equals(""))
                 {
-                    Toast.makeText(ctx, "ERROR tienen que estar rellenos todos los campos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, "ERROR: no puede haber campos vacios", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -85,11 +84,11 @@ public class Registrarse extends Activity
                     {
                         e.printStackTrace();
                     }
+
                     Toast.makeText(ctx, "Usuario insertado correctamente", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(ctx, Login.class);
                     startActivity(intent);
                 }
-
             }
         };
         buttonRegistrarse.setOnClickListener(listenerRegistrarse);
@@ -138,13 +137,13 @@ public class Registrarse extends Activity
                 writer.close();
                 os.close();
 
-                int responseCode=conn.getResponseCode();
+                int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK)
                 {
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuffer sb = new StringBuffer("");
-                    String line="";
+                    String line = "";
 
                     while((line = in.readLine()) != null)
                     {
@@ -153,11 +152,10 @@ public class Registrarse extends Activity
                     }
                     in.close();
                     return sb.toString();
-
                 }
                 else
                 {
-                    return new String("false : "+responseCode);
+                    return new String("false: "+responseCode);
                 }
             }
             catch(Exception e)
@@ -171,11 +169,11 @@ public class Registrarse extends Activity
         {
             if (result.contains("OK"))
             {
-                //toast registro con existo
+                Toast.makeText(ctx, "El usuario se ha registrado correctamente", Toast.LENGTH_LONG).show();
             }
             else
             {
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -189,7 +187,7 @@ public class Registrarse extends Activity
 
         while(itr.hasNext())
         {
-            String key= itr.next();
+            String key = itr.next();
             Object value = params.get(key);
 
             if (first)

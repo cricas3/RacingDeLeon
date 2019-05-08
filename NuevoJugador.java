@@ -74,7 +74,7 @@ public class NuevoJugador extends Activity
                 }
                 else
                 {
-                    Toast.makeText(ctx, "ERROR: no puede haber campos vacios", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, "ERROR: no se ha insertado debido a que no puede haber campos vacios", Toast.LENGTH_LONG).show();
                 }
             }
         };
@@ -107,7 +107,6 @@ public class NuevoJugador extends Activity
                 postDataParams.put("apellido1", apellido1);
                 postDataParams.put("apellido2", apellido2);
 
-
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
                 conn.setConnectTimeout(15000 /* milliseconds */);
@@ -122,13 +121,13 @@ public class NuevoJugador extends Activity
                 writer.close();
                 os.close();
 
-                int responseCode=conn.getResponseCode();
+                int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK)
                 {
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuffer sb = new StringBuffer("");
-                    String line="";
+                    String line = "";
 
                     while((line = in.readLine()) != null)
                     {
@@ -141,12 +140,12 @@ public class NuevoJugador extends Activity
                 }
                 else
                 {
-                    return new String("false : "+responseCode);
+                    return new String("false: "+responseCode);
                 }
             }
             catch(Exception e)
             {
-                return new String("Exception: " + e.getMessage());
+                return new String("Exception: " +e.getMessage());
             }
         }
 
@@ -155,11 +154,11 @@ public class NuevoJugador extends Activity
         {
             if (result.contains("OK"))
             {
-                //toast registro con existo
+                Toast.makeText(ctx, "El nuevo jugador se ha insertado correctamente", Toast.LENGTH_LONG).show();
             }
             else
             {
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -173,7 +172,7 @@ public class NuevoJugador extends Activity
 
         while(itr.hasNext())
         {
-            String key= itr.next();
+            String key = itr.next();
             Object value = params.get(key);
 
             if (first)

@@ -152,7 +152,6 @@ public class Login extends Activity
                     }
                     in.close();
                     return sb.toString();
-
                 }
                 else
                 {
@@ -182,7 +181,7 @@ public class Login extends Activity
             }
             else
             {
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
         }
     }

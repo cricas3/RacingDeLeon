@@ -67,7 +67,7 @@ public class Jugadores extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            Toast.makeText(Jugadores.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            //Toast.makeText(Jugadores.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -106,7 +106,7 @@ public class Jugadores extends Activity
                             @Override
                             public void run()
                             {
-                                Toast.makeText(getApplicationContext(),"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
+                                Toast.makeText(ctx,"ERROR DE AUTENTIFICACIÓN" , Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -132,20 +132,20 @@ public class Jugadores extends Activity
                         @Override
                         public void run()
                         {
-                            Toast.makeText(getApplicationContext(),"Json parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ctx,"Json parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }
             }
             else
             {
-                Log.e(TAG, "Couldn't get json from server.");
+                Log.e(TAG, "No se pudo obtener el json del servidor");
                 runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
                     {
-                        Toast.makeText(getApplicationContext(),"Couldn't get json from server. Check LogCat for possible errors!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ctx,"No se pudo obtener el json del servidor. Compruebe el Logcat para posibles errores", Toast.LENGTH_LONG).show();
                     }
                 });
             }

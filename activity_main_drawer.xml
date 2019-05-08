@@ -16,9 +16,15 @@
             android:id="@+id/plantilla"
             android:icon="@drawable/futbolista"
             android:title="Jugadores" />
-        <item
-            android:id="@+id/cerrarSesion"
-            android:icon="@drawable/apagar"
-            android:title="Cerrar sesión" />
     </group>
+
+    <item android:title="Otros">
+        <menu>
+            <item
+                android:id="@+id/cerrarSesion"
+                android:icon="@drawable/apagar"
+                android:title="Cerrar sesión" />
+        </menu>
+    </item>
+
 </menu>
