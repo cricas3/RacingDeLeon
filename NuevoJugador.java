@@ -53,22 +53,29 @@ public class NuevoJugador extends Activity
                 apellido1 = editTextApellido1.getText().toString();
                 apellido2 = editTextApellido2.getText().toString();
 
-                try
+                if(!"".equals(nombre) || !"".equals(apellido1) || !"".equals(apellido2))
                 {
-                    new SendRequest().execute().get();
-                }
-                catch (ExecutionException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (InterruptedException e)
-                {
-                    e.printStackTrace();
-                }
+                    try
+                    {
+                        new SendRequest().execute().get();
+                    }
+                    catch (ExecutionException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
 
-                Intent intent = new Intent(ctx, MainActivity.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(ctx, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(ctx, "ERROR: no puede haber campos vacios", Toast.LENGTH_LONG).show();
+                }
             }
         };
         buttonInsertar.setOnClickListener(listener);

@@ -93,7 +93,6 @@ public class Login extends Activity
                     editor.putString("password", password);
                     editor.commit();
                 }
-                finish();
             }
         };
         buttonLogin.setOnClickListener(listenerLogin);
