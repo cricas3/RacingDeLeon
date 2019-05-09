@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +26,6 @@ public class Detalles extends Activity
     ArrayList<String> detallesList;
     String id;
     TextView textView;
-
     private String TAG = Jugadores.class.getSimpleName();
 
     @Override
@@ -33,14 +34,27 @@ public class Detalles extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalles);
 
+        ctx = getApplicationContext();
+
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         String jugador = intent.getStringExtra("jugador");
 
-        ctx = getApplicationContext();
-
         textView = this.findViewById(R.id.textViewDetalles);
         textView.setText(jugador);
+
+        Button buttonModificar = this.findViewById(R.id.botonModificar);
+
+        View.OnClickListener listenerModificar = new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(ctx, Modificar.class);
+                startActivity(intent);
+            }
+        };
+        buttonModificar.setOnClickListener(listenerModificar);
 
         listViewDetalles = this.findViewById(R.id.detallesJugador);
 
@@ -66,7 +80,6 @@ public class Detalles extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(Detalles.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override

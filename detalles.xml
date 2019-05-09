@@ -15,51 +15,17 @@
         android:paddingBottom="10pt"
         android:paddingTop="7pt"/>
 
-    <!--<TextView
-        android:id="@+id/detallesNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10pt"
-        android:paddingTop="7pt"
-        android:textSize="12pt"/>
-
-    <TextView
-        android:id="@+id/detallesApellido1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10pt"
-        android:paddingTop="7pt"
-        android:textSize="12pt"/>
-
-    <TextView
-        android:id="@+id/detallesApellido2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10pt"
-        android:paddingTop="7pt"
-        android:textSize="12pt"/>
-
-    <TextView
-        android:id="@+id/detallesGoles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10pt"
-        android:paddingTop="7pt"
-        android:textSize="12pt"/>
-
-    <TextView
-        android:id="@+id/detallesPartidos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10pt"
-        android:paddingTop="7pt"
-        android:textSize="12pt"/>-->
-
     <ListView
         android:id="@+id/detallesJugador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:dividerHeight="15dp"/>
+
+    <Button
+        android:id="@+id/botonModificar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modificar datos"/>
 
 </LinearLayout>

@@ -137,11 +137,11 @@ public class Login extends Activity
                 writer.close();
                 os.close();
 
-                int responseCode=conn.getResponseCode();
+                int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK)
                 {
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuffer sb = new StringBuffer("");
                     String line="";
 
@@ -169,7 +169,7 @@ public class Login extends Activity
         {
             if (result.contains("OK"))
             {
-                String entrenador = result.substring(result.length() -2, result.length() -1);
+                String entrenador = result.substring(result.length() -2, result.length() - 1);
                 prefs = getSharedPreferences("datos",Context.MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = prefs.edit();
@@ -196,7 +196,7 @@ public class Login extends Activity
 
         while(itr.hasNext())
         {
-            String key= itr.next();
+            String key = itr.next();
             Object value = params.get(key);
 
             if (first)

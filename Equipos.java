@@ -32,11 +32,11 @@ public class Equipos extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.equipos);
 
+        ctx = getApplicationContext();
+
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         String competicion = intent.getStringExtra("competicion");
-
-        ctx = getApplicationContext();
 
         textView = this.findViewById(R.id.textViewCompeticion);
         textView.setText(competicion);
@@ -65,7 +65,6 @@ public class Equipos extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(Equipos.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override

@@ -27,7 +27,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class Convocatoria extends Activity
@@ -36,6 +35,7 @@ public class Convocatoria extends Activity
     String jugador;
     ListView listView;
     ArrayList<String> convocados;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -142,13 +142,13 @@ public class Convocatoria extends Activity
                 writer.close();
                 os.close();
 
-                int responseCode=conn.getResponseCode();
+                int responseCode = conn.getResponseCode();
 
                 if (responseCode == HttpsURLConnection.HTTP_OK)
                 {
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuffer sb = new StringBuffer("");
-                    String line="";
+                    String line = "";
 
                     while((line = in.readLine()) != null)
                     {
@@ -192,7 +192,7 @@ public class Convocatoria extends Activity
 
         while(itr.hasNext())
         {
-            String key= itr.next();
+            String key = itr.next();
             Object value = params.get(key);
 
             if (first)
@@ -213,7 +213,6 @@ public class Convocatoria extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(Convocatoria.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override

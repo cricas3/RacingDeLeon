@@ -23,9 +23,9 @@ public class ListaCompeticiones extends Activity
 {
     Context ctx;
     private String TAG = ListaCompeticiones.class.getSimpleName();
-
     ArrayList<String> competicionesList;
     ListView listViewCompeticiones;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -73,7 +73,6 @@ public class ListaCompeticiones extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(ListaCompeticiones.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override
