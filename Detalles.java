@@ -27,6 +27,11 @@ public class Detalles extends Activity
     String id;
     TextView textView;
     private String TAG = Jugadores.class.getSimpleName();
+    String nombre;
+    String apellido1;
+    String apellido2;
+    String goles;
+    String partidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +56,11 @@ public class Detalles extends Activity
             public void onClick(View v)
             {
                 Intent intent = new Intent(ctx, Modificar.class);
+                intent.putExtra("nombre", nombre);
+                intent.putExtra("apellido1", apellido1);
+                intent.putExtra("apellido2", apellido2);
+                intent.putExtra("goles", goles);
+                intent.putExtra("partidos", partidos);
                 startActivity(intent);
             }
         };
@@ -130,11 +140,11 @@ public class Detalles extends Activity
                         for (int i = 0; i < jugadores.length(); i++)
                         {
                             JSONObject c = jugadores.getJSONObject(i);
-                            String nombre = c.getString("Nombre");
-                            String apellido1 = c.getString("PrimerApellido");
-                            String apellido2 = c.getString("SegundoApellido");
-                            String goles = c.getString("Goles");
-                            String partidos = c.getString("PartidosJugados");
+                            nombre = c.getString("Nombre");
+                            apellido1 = c.getString("PrimerApellido");
+                            apellido2 = c.getString("SegundoApellido");
+                            goles = c.getString("Goles");
+                            partidos = c.getString("PartidosJugados");
 
                             detallesList.add("Nombre: " + nombre);
                             detallesList.add("Primer apellido: " + apellido1);
