@@ -70,10 +70,16 @@ public class Modificar extends Activity
                 goles = editTextGoles.getText().toString();
                 partidos = editTextPartidos.getText().toString();
 
-                Intent intent = new Intent(ctx, Detalles.class);
-                startActivity(intent);
-
-                new SendRequest().execute();
+                if (nombre.equals("") || apellido1.equals("") || apellido2.equals("") || goles.equals("") || partidos.equals(""))
+                {
+                    Toast.makeText(ctx, "ERROR: no se puede modificar, todos los campos deben tener contenido", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    new SendRequest().execute();
+                    Intent intent = new Intent(ctx, Detalles.class);
+                    startActivity(intent);
+                }
             }
         };
         buttonModificar.setOnClickListener(listenerModificar);

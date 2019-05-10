@@ -53,7 +53,11 @@ public class NuevoJugador extends Activity
                 apellido1 = editTextApellido1.getText().toString();
                 apellido2 = editTextApellido2.getText().toString();
 
-                if(!"".equals(nombre) || !"".equals(apellido1) || !"".equals(apellido2))
+                if(nombre.equals("") || apellido1.equals("") || apellido2.equals(""))
+                {
+                    Toast.makeText(ctx, "ERROR: no se ha insertado debido a que no puede haber campos vacios", Toast.LENGTH_LONG).show();
+                }
+                else
                 {
                     try
                     {
@@ -71,10 +75,6 @@ public class NuevoJugador extends Activity
                     Intent intent = new Intent(ctx, MainActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else
-                {
-                    Toast.makeText(ctx, "ERROR: no se ha insertado debido a que no puede haber campos vacios", Toast.LENGTH_LONG).show();
                 }
             }
         };
