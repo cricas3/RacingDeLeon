@@ -61,6 +61,7 @@ public class Detalles extends Activity
                 intent.putExtra("apellido2", apellido2);
                 intent.putExtra("goles", goles);
                 intent.putExtra("partidos", partidos);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         };
@@ -98,16 +99,16 @@ public class Detalles extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/detalles/"+id;
+            //String url = "http://10.245.97.193/api/v1/detalles/"+id;
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/detalles/"+id;
+            String url = "http://192.168.0.30/api/v1/detalles/"+id;
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/detalles/"+id;
 
             //clase AF
-            //String url = "http://180.180.15.128/api/v1/detalles/"+id;
+            //String url = "http://180.180.0.10/api/v1/detalles/"+id;
 
             SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
             String usuario = prefs.getString("usuario","");

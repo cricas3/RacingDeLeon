@@ -107,16 +107,16 @@ public class Convocatoria extends Activity
             try
             {
                 //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/convocatoria");
+                //URL url = new URL("http://10.245.97.193/api/v1/convocatoria");
 
                 //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/convocatoria");
+                URL url = new URL("http://192.168.0.30/api/v1/convocatoria");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/convocatoria");
 
-                //clase DAM
-                //URL url = new URL ("http://180.180.15.128/api/v1/convocatoria");
+                //clase AF
+                //URL url = new URL ("http://180.180.0.10/api/v1/convocatoria");
 
                 JSONObject postDataParams = new JSONObject();
 
@@ -221,16 +221,16 @@ public class Convocatoria extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/disponibles";
+            //String url = "http://10.245.97.193/api/v1/disponibles";
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/disponibles";
+            String url = "http://192.168.0.30/api/v1/disponibles";
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/disponibles";
 
             //clase AF
-            //String url = "http://180.180.15.128/api/v1/disponibles";
+            //String url = "http://180.180.0.10/api/v1/disponibles";
 
             SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
             String usuario = prefs.getString("usuario","");

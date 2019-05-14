@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -22,7 +20,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class NuevoJugador extends Activity
@@ -90,16 +87,16 @@ public class NuevoJugador extends Activity
             try
             {
                 //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
+                //URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
 
                 //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
+                URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/insertarNuevo");
 
                 //clase AF
-                //URL url = new URL ("http://180.180.15.128/api/v1/insertarNuevo");
+                //URL url = new URL ("http://180.180.0.10/api/v1/insertarNuevo");
 
                 JSONObject postDataParams = new JSONObject();
 

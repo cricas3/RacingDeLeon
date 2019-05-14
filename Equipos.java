@@ -73,16 +73,16 @@ public class Equipos extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/equipos/"+id;
+            //String url = "http://10.245.97.193/api/v1/equipos/"+id;
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/equipos/"+id;
+            String url = "http://192.168.0.30/api/v1/equipos/"+id;
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/equipos/"+id;
 
             //clase AF
-            //String url = "http://180.180.15.128/api/v1/equipos/"+id;
+            //String url = "http://180.180.0.10/api/v1/equipos/"+id;
 
             SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
             String usuario = prefs.getString("usuario","");

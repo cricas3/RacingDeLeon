@@ -67,7 +67,6 @@ public class Jugadores extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(Jugadores.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -76,16 +75,16 @@ public class Jugadores extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/jugadores/"+id;
+            //String url = "http://10.245.97.193/api/v1/jugadores/"+id;
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/jugadores/"+id;
+            String url = "http://192.168.0.30/api/v1/jugadores/"+id;
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/jugadores/"+id;
 
             //clase AF
-            //String url = "http://180.180.15.128/api/v1/jugadores/"+id;
+            //String url = "http://180.180.0.10/api/v1/jugadores/"+id;
 
             SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
             String usuario = prefs.getString("usuario","");

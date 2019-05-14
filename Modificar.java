@@ -3,12 +3,17 @@ package com.example.racingdeleon;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,6 +29,7 @@ public class Modificar extends Activity
     String apellido2;
     String goles;
     String partidos;
+    String id;
     EditText editTextNombre;
     EditText editTextApellido1;
     EditText editTextApellido2;
@@ -44,6 +50,7 @@ public class Modificar extends Activity
         String apellido2Detalles = intent.getStringExtra("apellido2");
         String golesDetalles = intent.getStringExtra("goles");
         String partidosDetalles = intent.getStringExtra("partidos");
+        id = intent.getStringExtra("id");
 
         editTextNombre = this.findViewById(R.id.nombreModificar);
         editTextApellido1 = this.findViewById(R.id.apellido1Modificar);
@@ -51,7 +58,15 @@ public class Modificar extends Activity
         editTextGoles = this.findViewById(R.id.golesModificar);
         editTextPartidos = this.findViewById(R.id.partidosModificar);
 
+        SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String entrenador = prefs.getString("entrenador","");
+
         Button buttonModificar = this.findViewById(R.id.modificarDatos);
+
+        if(entrenador.equals("0"))
+        {
+            buttonModificar.setVisibility(View.GONE);
+        }
 
         editTextNombre.setText(nombreDetalles);
         editTextApellido1.setText(apellido1Detalles);
@@ -76,9 +91,18 @@ public class Modificar extends Activity
                 }
                 else
                 {
-                    new SendRequest().execute();
-                    Intent intent = new Intent(ctx, Detalles.class);
-                    startActivity(intent);
+                    ///////////////////////////////////////////////////
+                    /*if(nombre.equals(nombre) && apellido1.equals(apellido1) && apellido2.equals(apellido2) && goles.equals(goles) && partidos.equals(partidos))
+                    {
+                        Toast.makeText(ctx, "ERROR: no se han modificado los campos", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {*/
+                        new SendRequest().execute();
+                        Intent intent = new Intent(ctx, ListaJugadores.class);
+                        startActivity(intent);
+                    //}
+                    /////////////////////////////////////////////////////
                 }
             }
         };
@@ -91,59 +115,43 @@ public class Modificar extends Activity
 
         protected String doInBackground(String... arg0)
         {
-            try
+            String msg = "OK";
+
+            SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            String usuario = prefs.getString("usuario","");
+            String password = prefs.getString("password","");
+
+            String urlstr = "http://192.168.0.30/api/v1/modificarDetalles/" + usuario + "/" + password + "/" + nombre + "/" + apellido1 + "/" + apellido2 + "/" + goles + "/" + partidos + "/" + id;
+            HttpHandler sh = new HttpHandler();
+            String jsonStr = sh.makeServiceCall(urlstr);
+
+            if (jsonStr != null)
             {
-                //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/modificarDetalles");
-
-                //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/modificarDetalles");
-
-                //clase DAM
-                //URL url = new URL ("http://169.254.134.3/api/v1/modificarDetalles");
-
-                //clase AF
-                //URL url = new URL ("http://180.180.15.128/api/v1/modificarDetalles");
-
-                JSONObject postDataParams = new JSONObject();
-
-                postDataParams.put("nombre", nombre);
-                postDataParams.put("apellido1", apellido1);
-                postDataParams.put("apellido2", apellido2);
-                postDataParams.put("goles", goles);
-                postDataParams.put("partidos", partidos);
-
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(15000 /* milliseconds */);
-                conn.setConnectTimeout(15000 /* milliseconds */);
-                conn.setRequestMethod("POST");
-                conn.setDoOutput(true);
-
-                int responseCode = conn.getResponseCode();
-
-                if (responseCode == HttpsURLConnection.HTTP_OK)
+                if (jsonStr.contains("ERROR"))
                 {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuffer sb = new StringBuffer("");
-                    String line = "";
-
-                    while((line = in.readLine()) != null)
+                    runOnUiThread(new Runnable()
                     {
-                        sb.append(line);
-                        break;
-                    }
-                    in.close();
-                    return sb.toString();
-                }
-                else
-                {
-                    return new String("false: "+responseCode);
+                        @Override
+                        public void run()
+                        {
+                            Toast.makeText(ctx,"ERROR AL ACTUALIZAR" , Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    msg = "ERROR AL ACTUALIZAR";
                 }
             }
-            catch(Exception e)
+            else
             {
-                return new String("Exception: " + e.getMessage());
+                runOnUiThread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        Toast.makeText(ctx,"No se pudo obtener el json del servidor. Compruebe el Logcat para posibles errores", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
+            return msg;
         }
 
         @Override
@@ -152,8 +160,6 @@ public class Modificar extends Activity
             if (result.contains("OK"))
             {
                 Toast.makeText(ctx, "Se han modificado correctamente los datos", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ctx, MainActivity.class);
-                startActivity(intent);
             }
             else
             {

@@ -107,16 +107,16 @@ public class Login extends Activity
             try
             {
                 //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/login");
+                //URL url = new URL("http://10.245.97.193/api/v1/login");
 
                 //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/login");
+                URL url = new URL("http://192.168.0.30/api/v1/login");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/login");
 
                 //clase AF
-                //URL url = new URL ("http://180.180.15.128/api/v1/login");
+                //URL url = new URL ("http://180.180.0.10/api/v1/login");
 
                 JSONObject postDataParams = new JSONObject();
 
