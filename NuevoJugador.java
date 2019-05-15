@@ -56,22 +56,26 @@ public class NuevoJugador extends Activity
                 }
                 else
                 {
-                    try
+                    /////////////////////////////////////////
+                    if(nombre.equals(""))
                     {
-                        new SendRequest().execute().get();
-                    }
-                    catch (ExecutionException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
+                        try
+                        {
+                            new SendRequest().execute().get();
+                        }
+                        catch (ExecutionException e)
+                        {
+                            e.printStackTrace();
+                        }
+                        catch (InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
 
-                    Intent intent = new Intent(ctx, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                        Intent intent = new Intent(ctx, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
         };
@@ -87,10 +91,10 @@ public class NuevoJugador extends Activity
             try
             {
                 //trabajo
-                //URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
+                URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
 
                 //casa
-                URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
+                //URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/insertarNuevo");

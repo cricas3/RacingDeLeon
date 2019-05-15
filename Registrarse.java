@@ -31,12 +31,14 @@ public class Registrarse extends Activity
     EditText editTextUsuario;
     EditText editTextCorreo;
     EditText editTextPassword;
+    EditText editTextPasswordRepetir;
     String nombre;
     String apellido1;
     String apellido2;
     String correo;
     String usuario;
     String password;
+    String repetirPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +55,7 @@ public class Registrarse extends Activity
         editTextUsuario = this.findViewById(R.id.editTextNombreUsuarioRegistro);
         editTextCorreo = this.findViewById(R.id.editTextCorreo);
         editTextPassword = this.findViewById(R.id.editTextPassWordRegistro);
+        editTextPasswordRepetir = this.findViewById(R.id.editTextRepetirPassWord);
 
         View.OnClickListener listenerRegistrarse = new View.OnClickListener()
         {
@@ -65,29 +68,37 @@ public class Registrarse extends Activity
                 correo = editTextCorreo.getText().toString();
                 usuario = editTextUsuario.getText().toString();
                 password = editTextPassword.getText().toString();
+                repetirPassword = editTextPasswordRepetir.getText().toString();
 
-                if (nombre.equals("") || apellido1.equals("") || apellido1.equals("") || correo.equals("") || usuario.equals("") || password.equals(""))
+                if (nombre.equals("") || apellido1.equals("") || apellido1.equals("") || correo.equals("") || usuario.equals("") || password.equals("") || repetirPassword.equals(""))
                 {
                     Toast.makeText(ctx, "ERROR: no puede haber campos vacios", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    try
+                    if(password.equals(repetirPassword))
                     {
-                        new SendRequest().execute().get();
-                    }
-                    catch (ExecutionException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
+                        try
+                        {
+                            new SendRequest().execute().get();
+                        }
+                        catch (ExecutionException e)
+                        {
+                            e.printStackTrace();
+                        }
+                        catch (InterruptedException e)
+                        {
+                            e.printStackTrace();
+                        }
 
-                    Toast.makeText(ctx, "Usuario insertado correctamente", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ctx, Login.class);
-                    startActivity(intent);
+                        Toast.makeText(ctx, "Usuario insertado correctamente", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ctx, Login.class);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(ctx, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         };
@@ -103,10 +114,10 @@ public class Registrarse extends Activity
             try
             {
                 //trabajo
-                //URL url = new URL("http://10.245.97.193/api/v1/registrar");
+                URL url = new URL("http://10.245.97.193/api/v1/registrar");
 
                 //casa
-                URL url = new URL("http://192.168.0.30/api/v1/registrar");
+                //URL url = new URL("http://192.168.0.30/api/v1/registrar");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/registrar");

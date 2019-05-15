@@ -26,6 +26,7 @@
         android:id="@+id/botonModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modificar datos"/>
+        android:text="Modificar datos"
+        android:layout_marginTop="10pt"/>
 
 </LinearLayout>

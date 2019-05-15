@@ -60,6 +60,7 @@
         android:id="@+id/modificarDatos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modificar"/>
+        android:text="Modificar"
+        android:layout_marginTop="10pt"/>
 
 </LinearLayout>

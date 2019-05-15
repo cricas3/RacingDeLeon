@@ -81,10 +81,10 @@ public class ListaCompeticiones extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            //String url = "http://10.245.97.193/api/v1/listaCompeticiones";
+            String url = "http://10.245.97.193/api/v1/listaCompeticiones";
 
             //casa
-            String url = "http://192.168.0.30/api/v1/listaCompeticiones";
+            //String url = "http://192.168.0.30/api/v1/listaCompeticiones";
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/listaCompeticiones";
