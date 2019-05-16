@@ -48,7 +48,15 @@ public class Detalles extends Activity
         textView = this.findViewById(R.id.textViewDetalles);
         textView.setText(jugador);
 
+        SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String entrenador = prefs.getString("entrenador","");
+
         Button buttonModificar = this.findViewById(R.id.botonModificar);
+
+        if(entrenador.equals("0"))
+        {
+            buttonModificar.setVisibility(View.GONE);
+        }
 
         View.OnClickListener listenerModificar = new View.OnClickListener()
         {

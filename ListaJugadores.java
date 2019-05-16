@@ -38,6 +38,7 @@ public class ListaJugadores extends Activity
 
         listViewJugadores = this.findViewById(R.id.listViewJugadores);
 
+
         AdapterView.OnItemClickListener listenerJugadores = new AdapterView.OnItemClickListener()
         {
             @Override
@@ -96,7 +97,6 @@ public class ListaJugadores extends Activity
         protected void onPreExecute()
         {
             super.onPreExecute();
-            //Toast.makeText(ListaJugadores.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
         }
 
         @Override

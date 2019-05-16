@@ -22,10 +22,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 import javax.net.ssl.HttpsURLConnection;
 
@@ -36,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListView listViewJugadores;
     Button buttonAniadir;
     Button buttonEliminar;
+    String usuario;
+    String password;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ctx = getApplicationContext();
 
-        SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
         String entrenador = prefs.getString("entrenador","");
 
         buttonAniadir = this.findViewById(R.id.aniadirJugador);
@@ -199,10 +207,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //clase AF
             //String url = "http://180.180.0.10/api/v1/listaConvocados";
 
-            /*SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
-            String usuario = prefs.getString("usuario","");
-            String password = prefs.getString("password","");
-            url += "/" + usuario + "/" + password;*/
+            prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            usuario = prefs.getString("usuario","");
+            password = prefs.getString("password","");
+            url += "/" + usuario + "/" + password;
 
             String jsonStr = sh.makeServiceCall(url);
 
@@ -290,11 +298,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //clase AF
                 //URL url = new URL ("http://180.180.0.10/api/v1/borrarConvocatoria");
 
+                JSONObject postDataParams = new JSONObject();
+
+                prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                usuario = prefs.getString("usuario","");
+                password = prefs.getString("password","");
+
+                postDataParams.put("usuario", usuario);
+                postDataParams.put("password", password);
+
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
                 conn.setConnectTimeout(15000 /* milliseconds */);
                 conn.setRequestMethod("POST");
                 conn.setDoOutput(true);
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                writer.write(getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
 
                 int responseCode = conn.getResponseCode();
 
@@ -328,14 +353,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             if (result.contains("OK"))
             {
-                Toast.makeText(ctx, "Se ha borrado correctamente a la convocatoria", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "Se ha borrado correctamente la convocatoria", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(ctx, MainActivity.class);
                 startActivity(intent);
             }
             else
             {
+                result = "ERROR: la convocatoria ya ha sido borrada";
                 Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
+        }
+
+        public String getPostDataString(JSONObject params) throws Exception
+        {
+            StringBuilder result = new StringBuilder();
+            boolean first = true;
+
+            Iterator<String> itr = params.keys();
+
+            while(itr.hasNext())
+            {
+                String key = itr.next();
+                Object value = params.get(key);
+
+                if (first)
+                    first = false;
+                else
+                    result.append("&");
+
+                result.append(URLEncoder.encode(key, "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+            }
+            return result.toString();
         }
     }
 }

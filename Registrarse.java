@@ -72,7 +72,7 @@ public class Registrarse extends Activity
 
                 if (nombre.equals("") || apellido1.equals("") || apellido1.equals("") || correo.equals("") || usuario.equals("") || password.equals("") || repetirPassword.equals(""))
                 {
-                    Toast.makeText(ctx, "ERROR: no puede haber campos vacios", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, "ERROR: todos los campos tienen que estar completos", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -91,13 +91,13 @@ public class Registrarse extends Activity
                             e.printStackTrace();
                         }
 
-                        Toast.makeText(ctx, "Usuario insertado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ctx, "El usuario se ha registrado correctamente", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(ctx, Login.class);
                         startActivity(intent);
                     }
                     else
                     {
-                        Toast.makeText(ctx, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ctx, "ERROR: las contraseñas no coinciden", Toast.LENGTH_LONG).show();
                     }
                 }
             }

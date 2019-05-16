@@ -178,9 +178,12 @@ public class Login extends Activity
 
                 Intent intent = new Intent(ctx, MainActivity.class);
                 startActivity(intent);
+                Toast.makeText(ctx, "Bienvenido al Racing", Toast.LENGTH_LONG).show();
+
             }
             else
             {
+                result = "ERROR: usuario o clave incorrectas";
                 Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
         }

@@ -3,6 +3,7 @@ package com.example.racingdeleon;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,12 @@ public class NuevoJugador extends Activity
     String nombre;
     String apellido1;
     String apellido2;
+    String usuario;
+    String password;
+    EditText editTextNombre;
+    EditText editTextApellido1;
+    EditText editTextApellido2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,10 +43,14 @@ public class NuevoJugador extends Activity
 
         ctx = getApplicationContext();
 
-        final EditText editTextNombre = this.findViewById(R.id.editTextNombreNuevo);
-        final EditText editTextApellido1 = this.findViewById(R.id.editTextApellido1Nuevo);
-        final EditText editTextApellido2 = this.findViewById(R.id.editTextApellido2Nuevo);
+        editTextNombre = this.findViewById(R.id.editTextNombreNuevo);
+        editTextApellido1 = this.findViewById(R.id.editTextApellido1Nuevo);
+        editTextApellido2 = this.findViewById(R.id.editTextApellido2Nuevo);
         Button buttonInsertar = this.findViewById(R.id.insertarNuevo);
+
+        SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        usuario = prefs.getString("usuario","");
+        password = prefs.getString("password","");
 
         View.OnClickListener listener = new View.OnClickListener()
         {
@@ -52,30 +63,27 @@ public class NuevoJugador extends Activity
 
                 if(nombre.equals("") || apellido1.equals("") || apellido2.equals(""))
                 {
-                    Toast.makeText(ctx, "ERROR: no se ha insertado debido a que no puede haber campos vacios", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, "ERROR: el jugador no se ha insertado ya que todos los campos tienen que estar completos", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    /////////////////////////////////////////
-                    if(nombre.equals(""))
+                    try
                     {
-                        try
-                        {
-                            new SendRequest().execute().get();
-                        }
-                        catch (ExecutionException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        catch (InterruptedException e)
-                        {
-                            e.printStackTrace();
-                        }
-
-                        Intent intent = new Intent(ctx, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        new SendRequest().execute().get();
                     }
+                    catch (ExecutionException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    Intent intent = new Intent(ctx, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
                 }
             }
         };
@@ -107,6 +115,8 @@ public class NuevoJugador extends Activity
                 postDataParams.put("nombre", nombre);
                 postDataParams.put("apellido1", apellido1);
                 postDataParams.put("apellido2", apellido2);
+                postDataParams.put("usuario", usuario);
+                postDataParams.put("password", password);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
@@ -155,7 +165,7 @@ public class NuevoJugador extends Activity
         {
             if (result.contains("OK"))
             {
-                Toast.makeText(ctx, "El nuevo jugador se ha insertado correctamente", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "El jugador se ha insertado correctamente", Toast.LENGTH_LONG).show();
             }
             else
             {

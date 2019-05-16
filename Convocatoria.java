@@ -122,11 +122,11 @@ public class Convocatoria extends Activity
 
                 postDataParams.put("jugador", jugador);
 
-                /*SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
                 String usuario = prefs.getString("usuario","");
                 String password = prefs.getString("password","");
                 postDataParams.put("usuario", usuario);
-                postDataParams.put("password", password);*/
+                postDataParams.put("password", password);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(15000 /* milliseconds */);
@@ -174,10 +174,11 @@ public class Convocatoria extends Activity
         {
             if (result.contains("OK"))
             {
-                Toast.makeText(ctx, "Se ha añadido correctamente a la convocatoria", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "El jugador se ha añadido correctamente a la convocatoria", Toast.LENGTH_LONG).show();
             }
             else
             {
+                result = "ERROR: el jugador ya ha sido añadido a la convocatoria";
                 Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
             }
         }
@@ -232,10 +233,10 @@ public class Convocatoria extends Activity
             //clase AF
             //String url = "http://180.180.0.10/api/v1/disponibles";
 
-            /*SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
             String usuario = prefs.getString("usuario","");
             String password = prefs.getString("password","");
-            url += "/" + usuario + "/" + password;*/
+            url += "/" + usuario + "/" + password;
 
             String jsonStr = sh.makeServiceCall(url);
 
@@ -300,7 +301,6 @@ public class Convocatoria extends Activity
             super.onPostExecute(result);
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Convocatoria.this, android.R.layout.simple_list_item_1, convocados);
             listView.setAdapter(arrayAdapter);
-
         }
     }
 }

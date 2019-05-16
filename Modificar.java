@@ -14,6 +14,11 @@ import android.widget.Toast;
 public class Modificar extends Activity
 {
     Context ctx;
+    String nombreInicial;
+    String apellido1Inicial;
+    String apellido2Inicial;
+    String golesInicial;
+    String partidosInicial;
     String nombre;
     String apellido1;
     String apellido2;
@@ -64,11 +69,11 @@ public class Modificar extends Activity
         editTextGoles.setText(golesDetalles);
         editTextPartidos.setText(partidosDetalles);
 
-        final String nombreInicial = editTextNombre.getText().toString();
-        final String apellido1Inicial = editTextApellido1.getText().toString();
-        final String apellido2Inicial = editTextApellido2.getText().toString();
-        final String golesInicial = editTextGoles.getText().toString();
-        final String partidosInicial = editTextPartidos.getText().toString();
+        nombreInicial = editTextNombre.getText().toString();
+        apellido1Inicial = editTextApellido1.getText().toString();
+        apellido2Inicial = editTextApellido2.getText().toString();
+        golesInicial = editTextGoles.getText().toString();
+        partidosInicial = editTextPartidos.getText().toString();
 
         View.OnClickListener listenerModificar = new View.OnClickListener()
         {
@@ -83,7 +88,7 @@ public class Modificar extends Activity
 
                 if (nombre.equals("") || apellido1.equals("") || apellido2.equals("") || goles.equals("") || partidos.equals(""))
                 {
-                    Toast.makeText(ctx, "ERROR: no se puede modificar, todos los campos deben tener contenido", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ctx, "ERROR: no se puede modificar el jugador ya que todos los campos tienen que estar completos", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -131,7 +136,6 @@ public class Modificar extends Activity
                             Toast.makeText(ctx,"ERROR AL ACTUALIZAR" , Toast.LENGTH_LONG).show();
                         }
                     });
-                    msg = "ERROR AL ACTUALIZAR";
                 }
             }
             else
