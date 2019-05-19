@@ -47,6 +47,19 @@ public class NuevoJugador extends Activity
         editTextApellido1 = this.findViewById(R.id.editTextApellido1Nuevo);
         editTextApellido2 = this.findViewById(R.id.editTextApellido2Nuevo);
         Button buttonInsertar = this.findViewById(R.id.insertarNuevo);
+        Button buttonVer = this.findViewById(R.id.verJugadores);
+
+        View.OnClickListener listenerVer = new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(ctx, ListaJugadores.class);
+                startActivity(intent);
+                finish();
+            }
+        };
+        buttonVer.setOnClickListener(listenerVer);
 
         SharedPreferences prefs = getSharedPreferences("datos", Context.MODE_PRIVATE);
         usuario = prefs.getString("usuario","");
@@ -79,11 +92,6 @@ public class NuevoJugador extends Activity
                     {
                         e.printStackTrace();
                     }
-
-                    Intent intent = new Intent(ctx, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
                 }
             }
         };
@@ -99,10 +107,10 @@ public class NuevoJugador extends Activity
             try
             {
                 //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
+                //URL url = new URL("http://10.245.97.193/api/v1/insertarNuevo");
 
                 //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
+                URL url = new URL("http://192.168.0.30/api/v1/insertarNuevo");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/insertarNuevo");
@@ -115,6 +123,7 @@ public class NuevoJugador extends Activity
                 postDataParams.put("nombre", nombre);
                 postDataParams.put("apellido1", apellido1);
                 postDataParams.put("apellido2", apellido2);
+
                 postDataParams.put("usuario", usuario);
                 postDataParams.put("password", password);
 
@@ -169,7 +178,7 @@ public class NuevoJugador extends Activity
             }
             else
             {
-                Toast.makeText(ctx, result, Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "ERROR: el jugador ya existe, no se puede insertar", Toast.LENGTH_LONG).show();
             }
         }
     }

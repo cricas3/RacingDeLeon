@@ -81,10 +81,10 @@ public class ListaEquipos extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/listaEquipos";
+            //String url = "http://10.245.97.193/api/v1/listaEquipos";
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/listaEquipos";
+            String url = "http://192.168.0.30/api/v1/listaEquipos";
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/listaEquipos";

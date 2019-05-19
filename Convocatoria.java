@@ -107,10 +107,10 @@ public class Convocatoria extends Activity
             try
             {
                 //trabajo
-                URL url = new URL("http://10.245.97.193/api/v1/convocatoria");
+                //URL url = new URL("http://10.245.97.193/api/v1/convocatoria");
 
                 //casa
-                //URL url = new URL("http://192.168.0.30/api/v1/convocatoria");
+                URL url = new URL("http://192.168.0.30/api/v1/convocatoria");
 
                 //clase DAM
                 //URL url = new URL ("http://169.254.134.3/api/v1/convocatoria");
@@ -222,10 +222,10 @@ public class Convocatoria extends Activity
             HttpHandler sh = new HttpHandler();
 
             //trabajo
-            String url = "http://10.245.97.193/api/v1/disponibles";
+            //String url = "http://10.245.97.193/api/v1/disponibles";
 
             //casa
-            //String url = "http://192.168.0.30/api/v1/disponibles";
+            String url = "http://192.168.0.30/api/v1/disponibles";
 
             //clase DAM
             //String url = "http://169.254.134.3/api/v1/disponibles";
